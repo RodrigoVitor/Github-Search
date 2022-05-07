@@ -1,7 +1,7 @@
 <template>
     <div>
       <Search />
-      <User v-if="isSearch" />
+      <AsideLeft v-if="isSearch" />
     </div>
 </template>
 
