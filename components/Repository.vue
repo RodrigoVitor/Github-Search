@@ -2,8 +2,8 @@
     <section>
         <article class="mt-2" v-for="repository in repositories" :key="repository.id">
             <header class="d-flex">
-                <h2>{{repository.name}}</h2>
-                <p ><b-img src="icon/yellow-star.png"></b-img></p>
+                <h2 title="Clique aqui para favoritarr">{{repository.name}}</h2>
+                <p ><b-img :src="img_path" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
             </header>
             <div>
                 <p>{{repository.description}}</p>
@@ -20,7 +20,7 @@ import {mapState} from 'vuex'
 export default {
     data () {
         return {
-            counts: [1, 2 ,3 ,4 ,5]
+            img_path: "icon/star.png"
         }
     },
     computed: {
@@ -38,6 +38,9 @@ section {
 }
 section article header {
     justify-content: space-between
+}
+section article header p, section article header h2 {
+    cursor:pointer
 }
 
 @media screen and (max-width:800px) {
