@@ -2,6 +2,7 @@
     <div>
       <Search />
       <AsideLeft v-if="isSearch" />
+      <AsideRight  v-if="isSearch" />
     </div>
 </template>
 
