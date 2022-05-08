@@ -1,8 +1,9 @@
 <template>
-    <main class="main-row">
+    <main :class="!isSearch ? 'main-column' : 'main-row' ">
         <div>
-            <h1>Github</h1>
-            <h2>Search</h2>
+            <h1 v-if="!title">Github</h1>
+            <h2 class="ml-3" v-if="!title">Search</h2>
+            <h2 v-if="title">{{title}}</h2>
         </div>
         <b-container>
             <b-form-input type="text"></b-form-input>
@@ -12,8 +13,13 @@
 </template>
 
 <script>
-import {mapMutations} from "vuex"
+import {mapMutations, mapState} from "vuex"
 export default {
+    data() {
+        return {
+            title: ''
+        }
+    },
     methods: {
         ...mapMutations('search', ['CHANGE_SEARCH']),
         Search () {
@@ -22,6 +28,13 @@ export default {
             main.classList.add("main-row")
             this.CHANGE_SEARCH()
         }
+    },
+    computed: {
+        ...mapState('search', ['isSearch'])
+    },
+    mounted () {
+        if(this.$router.app._route.name === "repositorio-favorito") 
+            this.title = "Repositórios Favoritos"
     }
 }
 </script>
@@ -44,11 +57,10 @@ main .container button {
     flex-direction: row;
 }
 .main-row div {
-    width:311px;
+    width:555px;
     display:flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
 }
 .main-row div h1, h2 {
     font-size:42px;
