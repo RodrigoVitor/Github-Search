@@ -115,4 +115,10 @@ main .container button {
 .main-column div h2 {
     font-size:64px;
 }
+
+@media screen and (max-width:800px) {
+    .main-column div h1, .main-column div h2 {font-size:32px; margin-right:10px;}
+    .main-column .container, .main-row .container {width:100%}
+    .main-row {flex-direction: column;}
+}
 </style>

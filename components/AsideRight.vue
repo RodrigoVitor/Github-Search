@@ -25,4 +25,8 @@ aside div a {
     color:#000;
     font-weight: lighter;
 }
+
+@media screen and (max-width: 800px) {
+    aside {position:relative; padding:28px}
+}
 </style>

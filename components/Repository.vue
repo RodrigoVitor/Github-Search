@@ -35,4 +35,8 @@ section {
 section article header {
     justify-content: space-between
 }
+
+@media screen and (max-width:800px) {
+    section {position: relative; width:100%; left:0; padding:28px;}
+}
 </style>
