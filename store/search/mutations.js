@@ -8,5 +8,8 @@ export default {
     },
     SET_USER(state, payload) {
         state.user = payload
+    },
+    SET_REPOSITORY(state, payload) {
+        state.repositories = payload
     }
 }
