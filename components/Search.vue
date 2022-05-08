@@ -6,31 +6,46 @@
             <h2 v-if="title">{{title}}</h2>
         </div>
         <b-container>
-            <b-form-input type="text"></b-form-input>
-            <b-button @click="Search"><img src="/icon/search.png" alt="icon Pesquisa"></b-button>
+            <b-form-input type="text" v-model="user"></b-form-input>
+            <b-button @click="Search"><img src="/icon/search.png" alt="icon Pesquisa"></b-button> <br>
         </b-container>
+        <div class="error">
+            <p class="text-danger">{{msg}}</p>
+        </div>
     </main>
 </template>
 
 <script>
-import {mapMutations, mapState} from "vuex"
+import {mapState, mapActions, mapMutations} from "vuex"
 export default {
     data() {
         return {
-            title: ''
+            title: '',
+            msg: ''
         }
     },
     methods: {
-        ...mapMutations('search', ['CHANGE_SEARCH']),
+        ...mapActions('search', ['search_user']),
+        ...mapMutations('search', ['CHANGE_USER_NAME']),
         Search () {
-            const main = document.querySelector("main")
-            main.classList.remove("main-column")
-            main.classList.add("main-row")
-            this.CHANGE_SEARCH()
+            if(!this.user)
+            {
+                this.msg = 'Usuario não encontrado'
+                return setInterval(() => {this.msg = ''}, 3000)
+            }
+            this.search_user()
         }
     },
     computed: {
-        ...mapState('search', ['isSearch'])
+        ...mapState('search', ['isSearch', 'user_name']),
+        user: {
+            get() {
+                return this.user_name
+            },
+            set(value) {
+                this.CHANGE_USER_NAME(value)
+            }
+        }
     },
     mounted () {
         if(this.$router.app._route.name === "repositorio-favorito") 

@@ -1,3 +1,5 @@
 export const state = () => ({
-    isSearch: false
+    isSearch: false,
+    user_name: '',
+    user: null
 })
