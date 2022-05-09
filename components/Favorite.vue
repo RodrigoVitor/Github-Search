@@ -2,16 +2,16 @@
     <div>
         <Search />
         <section>
-        <article class="mt-2" v-for="count in counts" :key="count">
+        <article class="mt-2" v-for="favorite in favorites" :key="favorite">
             <header class="d-flex">
-                <h2>Angular-AdminLTE</h2>
+                <h2>{{favorite.name}}</h2>
                 <p ><b-img src="icon/yellow-star.png"></b-img></p>
             </header>
             <div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus repellat soluta fugit qui nemo hic, quasi perspiciatis molestiae suscipit vitae sequi tenetur temporibus laudantium, assumenda rem adipisci voluptatem voluptatibus debitis!</p>
+                <p>{{favorite.description}}</p>
             </div>
             <div>
-                <p><b-img src="icon/star.png" alt="Estrelas"></b-img> 150</p>
+                <p><b-img src="icon/star.png" alt="Estrelas"></b-img> {{favorite.stargazers_count}}</p>
             </div>
         </article>
     </section>
@@ -19,11 +19,15 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     data () {
         return {
             counts: [1, 2 ,3 ,4 ,5]
         }
+    },
+    computed: {
+        ...mapState('search', ['favorites'])
     }
 }
 </script>

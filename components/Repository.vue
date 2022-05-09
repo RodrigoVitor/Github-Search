@@ -2,8 +2,8 @@
     <section>
         <article class="mt-2" v-for="repository in repositories" :key="repository.id">
             <header class="d-flex">
-                <h2 title="Clique aqui para favoritarr">{{repository.name}}</h2>
-                <p ><b-img :src="img_path" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
+                <h2 @click="addFavorites(repository)" title="Clique aqui para favoritarr">{{repository.name}}</h2>
+                <p ><b-img :src="star" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
             </header>
             <div>
                 <p>{{repository.description}}</p>
@@ -16,15 +16,22 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 export default {
     data () {
         return {
-            img_path: "icon/star.png"
+            star: "icon/star.png",
+            yellow_star: "icon/yellow-star.png"
+        }
+    },
+    methods: {
+        ...mapMutations('search', ['ADD_FAVORITE']),
+        addFavorites(value) {
+            this.ADD_FAVORITE(value)
         }
     },
     computed: {
-        ...mapState('search',['repositories'])
+        ...mapState('search',['repositories', 'favorites'])
     }
 }
 </script>

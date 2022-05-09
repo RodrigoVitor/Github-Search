@@ -11,5 +11,9 @@ export default {
     },
     SET_REPOSITORY(state, payload) {
         state.repositories = payload
+    },
+    ADD_FAVORITE(state, payload) {
+        state.favorites.push(payload)
     }
+    
 }
