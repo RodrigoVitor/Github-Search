@@ -14,6 +14,14 @@ export default {
     },
     ADD_FAVORITE(state, payload) {
         state.favorites.push(payload)
+    },
+    REMOVE_FAVORITE(state, payload) {
+        let i
+        for(i=0; i < state.favorites.length; i++) {
+            if(state.favorites[i].id === payload) {
+                state.favorites.splice(i, 1)
+            }
+        }
     }
     
 }

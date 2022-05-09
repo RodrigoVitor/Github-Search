@@ -2,9 +2,9 @@
     <div>
         <Search />
         <section>
-        <article class="mt-2" v-for="favorite in favorites" :key="favorite">
+        <article class="mt-2" v-for="favorite in favorites" :key="favorite.id">
             <header class="d-flex">
-                <h2>{{favorite.name}}</h2>
+                <h2 @click="remove_favorite(favorite.id)">{{favorite.name}}</h2>
                 <p ><b-img src="icon/yellow-star.png"></b-img></p>
             </header>
             <div>
@@ -19,11 +19,17 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 export default {
     data () {
         return {
             counts: [1, 2 ,3 ,4 ,5]
+        }
+    },
+    methods: {
+        ...mapMutations('search', ['REMOVE_FAVORITE']),
+        remove_favorite(value) {
+            this.REMOVE_FAVORITE(value)
         }
     },
     computed: {
@@ -39,5 +45,8 @@ section {
 }
 section article header {
     justify-content: space-between
+}
+section article header p, section article header h2 {
+    cursor:pointer
 }
 </style>
