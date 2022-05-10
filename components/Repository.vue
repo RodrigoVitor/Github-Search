@@ -3,7 +3,7 @@
         <article class="mt-2" v-for="repository in repositories" :key="repository.id">
             <header class="d-flex">
                 <h2 @click="addFavorites(repository)" title="Clique aqui para favoritarr">{{repository.name}}</h2>
-                <p ><b-img :src="star" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
+                <p ><b-img :src="star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
             </header>
             <div>
                 <p>{{repository.description}}</p>
@@ -27,6 +27,9 @@ export default {
     methods: {
         ...mapMutations('search', ['ADD_FAVORITE']),
         addFavorites(value) {
+            let img = document.getElementById(value.id)
+            img.src = this.yellow_star
+            
             this.ADD_FAVORITE(value)
         }
     },

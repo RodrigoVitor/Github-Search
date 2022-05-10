@@ -13,6 +13,10 @@ export default {
         state.repositories = payload
     },
     ADD_FAVORITE(state, payload) {
+        for (let i = 0; i < state.favorites.length; i++) {
+            if (state.favorites[i].id === payload.id)
+                return false
+        }
         state.favorites.push(payload)
     },
     REMOVE_FAVORITE(state, payload) {
