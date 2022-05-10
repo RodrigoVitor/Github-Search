@@ -10,7 +10,7 @@
             <b-button @click="Search"><img src="/icon/search.png" alt="icon Pesquisa"></b-button> <br>
         </b-container>
         <div class="error">
-            <p class="text-danger">{{msg}}</p>
+            <p class="text-danger">{{error}}</p>
         </div>
     </main>
 </template>
@@ -21,23 +21,17 @@ export default {
     data() {
         return {
             title: '',
-            msg: ''
         }
     },
     methods: {
         ...mapActions('search', ['search_user']),
         ...mapMutations('search', ['CHANGE_USER_NAME']),
         Search () {
-            if(!this.user)
-            {
-                this.msg = 'Usuario não encontrado'
-                return setInterval(() => {this.msg = ''}, 3000)
-            }
             this.search_user()
         }
     },
     computed: {
-        ...mapState('search', ['isSearch', 'user_name']),
+        ...mapState('search', ['isSearch', 'user_name', 'error']),
         user: {
             get() {
                 return this.user_name

@@ -3,7 +3,8 @@
         <article class="mt-2" v-for="repository in repositories" :key="repository.id">
             <header class="d-flex">
                 <h2 @click="addFavorites(repository)" title="Clique aqui para favoritarr">{{repository.name}}</h2>
-                <p ><b-img :src="star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
+                <p v-if="favorites.includes(repository)"><b-img  :src="yellow_star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
+                <p v-else><b-img :src="star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
             </header>
             <div>
                 <p>{{repository.description}}</p>

@@ -12,6 +12,12 @@ export default {
     SET_REPOSITORY(state, payload) {
         state.repositories = payload
     },
+    SET_ERROR(state, payload) {
+        state.error = payload
+    },
+    SET_ERROR_EMPTY(state) {
+        state.error = ''
+    },
     ADD_FAVORITE(state, payload) {
         for (let i = 0; i < state.favorites.length; i++) {
             if (state.favorites[i].id === payload.id)

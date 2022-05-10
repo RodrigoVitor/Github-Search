@@ -3,5 +3,6 @@ export const state = () => ({
     user_name: '',
     user: null,
     repositories: null,
-    favorites: []
+    favorites: [],
+    error: ''
 })
