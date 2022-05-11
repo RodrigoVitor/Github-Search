@@ -21,11 +21,6 @@
 <script>
 import {mapState, mapMutations} from 'vuex'
 export default {
-    data () {
-        return {
-            counts: [1, 2 ,3 ,4 ,5]
-        }
-    },
     methods: {
         ...mapMutations('search', ['REMOVE_FAVORITE']),
         remove_favorite(value) {
