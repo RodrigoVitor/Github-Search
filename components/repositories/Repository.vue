@@ -1,10 +1,14 @@
 <template>
     <section>
-        <article class="mt-2" v-for="repository in repositories" :key="repository.id">
+        <article class="mt-5" v-for="repository in repositories" :key="repository.id">
             <header class="d-flex">
                 <h2 @click="addFavorites(repository)" title="Clique aqui para favoritarr">{{repository.name}}</h2>
-                <p v-if="favorites.includes(repository)"><b-img  :src="yellow_star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
-                <p v-else><b-img :src="star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img></p>
+                <p v-if="favorites.includes(repository)">
+                    <b-img  :src="yellow_star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img>
+                </p>
+                <p v-else  @click="addFavorites(repository)">
+                    <b-img :src="star" :id="repository.id" alt="estrela" title="Clique aqui para favoritar"></b-img>
+                </p>
             </header>
             <div>
                 <p>{{repository.description}}</p>
@@ -26,7 +30,7 @@ export default {
         }
     },
     methods: {
-        ...mapMutations('search', ['ADD_FAVORITE']),
+        ...mapMutations('search', ['ADD_FAVORITE', 'REMOVE_FAVORITE']),
         addFavorites(value) {
             let img = document.getElementById(value.id)
             img.src = this.yellow_star
@@ -42,9 +46,9 @@ export default {
 
 <style scoped>
 section {
-    width:1028px;
+    width:55%;
     position:absolute;
-    left: 328px;
+    left: 25%;
     top:106px;
 }
 section article header {

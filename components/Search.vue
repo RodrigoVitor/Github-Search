@@ -27,6 +27,9 @@ export default {
         ...mapActions('search', ['search_user']),
         ...mapMutations('search', ['CHANGE_USER_NAME']),
         Search () {
+            if(this.$router.app._route.name === "repositorio-favorito") {
+                this.$router.replace("/")
+            }
             this.search_user()
         }
     },
@@ -72,7 +75,7 @@ main .container button {
     align-items: center;
 }
 .main-row div h1, h2 {
-    font-size:42px;
+    font-size:32px;
 }
 .main-row div h1, .main-column div h1 {
     font-family: 'Roboto Mono';

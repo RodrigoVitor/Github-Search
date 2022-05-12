@@ -2,19 +2,19 @@
     <div>
         <Search />
         <section>
-        <article class="mt-2" v-for="favorite in favorites" :key="favorite.id">
-            <header class="d-flex">
-                <h2 @click="remove_favorite(favorite.id)">{{favorite.name}}</h2>
-                <p ><b-img src="icon/yellow-star.png"></b-img></p>
-            </header>
-            <div>
-                <p>{{favorite.description}}</p>
-            </div>
-            <div>
-                <p><b-img src="icon/star.png" alt="Estrelas"></b-img> {{favorite.stargazers_count}}</p>
-            </div>
-        </article>
-    </section>
+            <article class="mt-2" v-for="favorite in favorites" :key="favorite.id">
+                <header class="d-flex">
+                    <h2 @click="remove_favorite(favorite.id)">{{favorite.name}}</h2>
+                    <p ><b-img src="icon/yellow-star.png"></b-img></p>
+                </header>
+                <div>
+                    <p>{{favorite.description}}</p>
+                </div>
+                <div>
+                    <p><b-img src="icon/star.png" alt="Estrelas"></b-img> {{favorite.stargazers_count}}</p>
+                </div>
+            </article>
+        </section>
     </div>
 </template>
 
@@ -35,8 +35,9 @@ export default {
 
 <style scoped>
 section {
-    width:1028px;
+    width:80%;
     padding:28px;
+    margin:auto
 }
 section article header {
     justify-content: space-between

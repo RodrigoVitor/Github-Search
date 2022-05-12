@@ -33,7 +33,7 @@ export default {
 
 #user {
     padding:0px 28px;
-    width:300px;
+    width:20%;
 }
 aside figure header p {
     font-size:36px;

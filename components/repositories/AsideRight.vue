@@ -15,7 +15,7 @@
 
 aside {
     position:absolute;
-    right:28px;
+    right:8px;
     top:106px;
 }
 aside div a {
