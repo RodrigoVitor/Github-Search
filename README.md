@@ -1,4 +1,9 @@
 # GithubSearch
+* este projeto foi desenvolvido para teste de front-end. Você pode acessa-lo [clicando aqui](http://githubsearch.epizy.com/).
+
+## Como funciona?
+* Você como usuário pesquise por um usuário do Github, e aplicação te da um retorno caso ele exista ou não.
+* Você como usuário pode adicionar um repositório que goste a uma lista de repósitorio favortio e acessa-lo.
 
 ## Build Setup
 
